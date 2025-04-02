@@ -1,5 +1,51 @@
-# Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+#  GAME 3D  
+
+
+## Используемые технологии
+
+- **VUE 3**
+  
+- **PINIA**
+
+- **SlIDER28**: Интегрирован собственный адаптивный слайдер
+- **МАСКА ТЕЛЕФОНА** Интегрирован собственная маска для input 
+
+-- **TypeScript**
+-- **SCSS**
+
+## Ссылка на проект
+
+[Demo].https://tudovchanin.github.io/game3d/#/
+
+
+## Как начать
+
+Для того чтобы клонировать и запустить проект, выполните следующие шаги:
+
+1. Клонируйте репозиторий:
+    ```bash
+    git clone https://github.com/Tudovchanin/game3d
+    ```   
+
+2. Перейдите в директорию проекта:
+    ```bash
+    cd game3d
+    ```
+
+3. Установите зависимости:
+    ```bash
+    npm install
+    ```
+
+4. Запустите для сборки проекта:
+    ```bash
+    npm run build
+    ```
+
+5. Запустите для просмотра проекта:
+   ```bash
+    npm run preview
+    ```
+
