@@ -9,7 +9,7 @@ const scroll = ref(false);
 const namePath = computed(()=> {
   return route.name;
 })
- 
+
 
 onMounted(() => {
   window.addEventListener("scroll", () => {
@@ -22,7 +22,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="page">
-    <header class="page__header header" :class="{'light': namePath === 'Home'}">
+    <header class="page__header header" :class="{'light': namePath === 'Home', 'scroll': scroll}">
       <div class="header__content x-center width-common">
         <div class="header__logo logo">
           <RouterLink class="text-dark" to="/">Game 3d</RouterLink>
@@ -56,12 +56,14 @@ onMounted(() => {
   flex-direction: column;
   min-height: 100vh;
 
+
   &__header {
     position: fixed;
     z-index: 100;
+    top: 0;
     left: 0;
     width: 100vw;
-    transition:  background-color .5s;
+    transition:  background-color .5s, box-shadow .5s;
   }
 
   &__main {
@@ -69,6 +71,9 @@ onMounted(() => {
     padding-top: 150px;
     padding-bottom: 100px;
     width: 100vw;
+    @media (max-width:530px) {
+      padding-top: 120px;
+    }
   }
 
   &__footer {
@@ -78,56 +83,31 @@ onMounted(() => {
     min-height: 100px;
     background-color: var(--color-main);
     transition:  background-color .5s;
-
-  }
-}
-
-
-.footer {
-  width: 100vw;
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  &__copyright {
-    align-self: flex-end;
-    font-size: 14px;
-    opacity: 0.8;
-    text-align: center;
-    color: white;
-  }
-
-  &__links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    color: white;
-    font-size: 14px;
-  }
-  &__logo {
-    font-size: 20px;
-    max-width: fit-content;
+    @media (max-width: 500px) {
+      padding-top: 25px;
+    }
   }
 }
 
 
 .light {
-  background-color: white;
-  background: -webkit-linear-gradient(90deg, #bdbdbd,#dedede,#ffffff);background: linear-gradient(90deg, #bdbdbd,#dedede,#ffffff);
+  background-color: var(--light-color);
+  background: -webkit-linear-gradient(90deg, #bdbdbd,#dedede,#ffffff);
+  background: var(--light-gradient);
   font-family: sans-serif;
   .text-dark {
     text-decoration-line: underline;
     color: var(--color-secondary);
-    text-decoration-color: black;
+    text-decoration-color: var(--color-secondary);
   }
 }
-
 
 .dark {
   background-color: var(--color-main);
   color: white;
+}
+
+.scroll {
+  box-shadow: 0 0 10px 10px var(--color-main);
 }
 </style>

@@ -3,9 +3,9 @@
   text-transform: uppercase;
 
     font-weight: 700;
-    color: white;
+    color: var(--light-color);
     text-decoration-line: underline;
-    text-decoration-color: bisque;
+    text-decoration-color: var(--light-color);
 
     @media (hover:hover) {
       transition: opacity .5s;

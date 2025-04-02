@@ -10,5 +10,7 @@ import AppRouter from './pages/index.vue';
 
 #app {
   min-height: 100vh;
+  overflow-x: hidden;
+
 }
 </style>

@@ -1,5 +1,4 @@
 
-
 .width-common {
   max-width: 1440px;
   width: 100%;
@@ -10,4 +9,12 @@
 .x-center {
 margin-left: auto;
 margin-right: auto;
+}
+
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

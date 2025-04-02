@@ -1,0 +1,38 @@
+
+
+.order-form {
+  display: grid;
+  gap: 20px;
+  max-width: 400px;
+  padding: 20px;
+  background-color: var(--color-main);
+  color: var(--light-color);
+
+  &__group {
+    display: grid;
+    gap: 5px;
+  }
+
+  &__input {
+    height: 35px;
+    padding-left: 10px;
+    background-color: var(--color-secondary);
+    border: none;
+    color: var(--light-color);;
+
+    &:focus {
+      outline: gray solid 1px;
+    }
+  }
+
+  &__submit {
+    color: var(--color-secondary);
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    max-width: 200px;
+    &:active {
+      transform: scale(0.9px);
+    }
+  }
+}

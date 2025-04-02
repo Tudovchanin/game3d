@@ -1,7 +1,6 @@
 <script setup lang='ts'>
 import { Slider } from '@/utils/slider28.ts';
-
-import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 type SliderImg = {
   images: string[];
@@ -10,21 +9,17 @@ const MEDIA = {
   1: window.matchMedia('(min-width: 1px)'),
 };
 
-
-
 const props = defineProps<SliderImg>()
 
 const refSlider = ref<HTMLElement | null>(null);
 const refSliderTrack = ref<HTMLElement | null>(null);
 const refItem = ref<HTMLElement[]>([]);
 
-let sliderProduct;
+let sliderProduct:any;
 
 const emit = defineEmits(['slider-move']);
 
 function emitEventSliderMove(event: { currentStep: number; totalSteps: number }) {
-console.log(event, 'emitEventSliderMove');
-
 emit('slider-move', event);
 }
 
@@ -33,7 +28,6 @@ function handleSliderEvent(e:CustomEvent<{
   currentStep: number;
   totalSteps: number;
 }>) {
-  console.log(`Событие: текущий шаг ${e.detail.currentStep}, всего шагов ${e.detail.totalSteps}`);
       emitEventSliderMove({
         currentStep: e.detail.currentStep,
         totalSteps: e.detail.totalSteps
@@ -55,20 +49,20 @@ onMounted(() => {
     sliderProduct.initSlider($sliderElem); //инициализация слайдера
     sliderProduct.initDragDrop(true);//инициализация drag'n drop , если для desktop ненужно, то вызываем метод без аргумента(для touch устройств)
 
-    console.log(sliderProduct, 'sliderProduct');
-
-
-
     (refSlider.value as HTMLElement).addEventListener('slideChanged', handleSliderEvent as EventListener);
 
+  }
+})
+
+onBeforeUnmount(()=> {
+  if(sliderProduct) {
+    sliderProduct.removeAllListener();
   }
 })
 
 
 </script>
 <template>
-
-
   <div ref="refSlider" class="slider">
     <div ref="refSliderTrack" class="slider__track">
       <div v-for="image in props.images" ref="refItem" class="slider__item">
@@ -77,13 +71,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <!-- <div class="container-btn">
-      <button class="btn-prev-slide">назад</button>
-
-      <button class="btn-next-slide">вперед</button>
-    </div> -->
   </div>
-
 </template>
 
 

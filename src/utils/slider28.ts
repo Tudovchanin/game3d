@@ -10,8 +10,6 @@ type SliderOptions = {
   itemLength: number;
 };
 
-type StepsCallback = (stepNumber: number, totalSteps: number) => void;
-type ResizeCallback = () => void;
 
 export class Slider {
 
@@ -101,6 +99,7 @@ export class Slider {
     }
   }
 
+
   dispatchSlideChangeEvent() {
     const event = new CustomEvent("slideChanged", {
       bubbles: true,
@@ -109,9 +108,6 @@ export class Slider {
         totalSteps: this.totalSteps,
       },
     });
-console.log(this.count++);
-console.log(this.count);
-
 
     this.elemSliderTrack.dispatchEvent(event);
   }
@@ -159,6 +155,7 @@ console.log(this.count);
   }
 
   handleResize() {
+    
     let newWindowWidth = document.documentElement.clientWidth;
     if (newWindowWidth === this.windowWidth) return;
     this.resetSlider();

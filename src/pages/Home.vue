@@ -1,5 +1,4 @@
-<script setup lang='ts'>
-</script>
+
 <template>
   <div class="home x-center width-common">
     <h1 class="home__title">Game 3d</h1>
@@ -9,16 +8,14 @@
 
 </template>
 
-
 <style  lang="scss">
-
 
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
   &__title {
-    font-size: 100px;
+    font-size: min(100px, 12vw);
     text-transform: uppercase;
     font-weight: 700;
     text-decoration: underline;
@@ -26,7 +23,7 @@
   }
 
   &__link {
-    font-size: 50px;
+    font-size: min(50px, 7vw);
     position: relative;
 
     @media (hover:hover) {
@@ -37,7 +34,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background-color: rgb(255, 255, 255);
+      background-color: var(--light-color);
       transition: width .5s;
     }
 
