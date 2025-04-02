@@ -3,7 +3,7 @@ import routes from './routes.ts'
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     return {   top: 0,
       behavior: 'smooth' }
 

@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import { Slider } from '@/utils/slider28.ts';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+const BASE_PATH = `${import.meta.env.BASE_URL}`;
 
 type SliderImg = {
   images: string[];
@@ -8,6 +9,8 @@ type SliderImg = {
 const MEDIA = {
   1: window.matchMedia('(min-width: 1px)'),
 };
+
+
 
 const props = defineProps<SliderImg>()
 
@@ -67,7 +70,7 @@ onBeforeUnmount(()=> {
     <div ref="refSliderTrack" class="slider__track">
       <div v-for="image in props.images" ref="refItem" class="slider__item">
         <div class="slider__content">
-          <img :src="`/game3d/images/${image}`" alt="ps6">
+          <img :src="`${BASE_PATH}images/${image}`" alt="ps6">
         </div>
       </div>
     </div>

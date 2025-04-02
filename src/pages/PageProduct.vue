@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
 <template>
   <section class="detail-product x-center width-common">
     <RouterLink class="detail-product__link-back" to="/products/?page=1">
-      <img src="/game3d/images/left-black.png" alt="назад" />
+      <img src="/images/left-black.png" alt="назад" />
     </RouterLink>
 
     <div class="detail-product__header">

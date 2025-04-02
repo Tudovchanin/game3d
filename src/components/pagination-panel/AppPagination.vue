@@ -2,6 +2,8 @@
 import { ref, onMounted, computed, onUpdated } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import type { Product } from "@/stores/products.store";
+const BASE_PATH = `${import.meta.env.BASE_URL}`;
+
 
 type Pagination = {
   cardsData: Product[];
@@ -124,10 +126,10 @@ onUpdated(() => {
   <div class="pagination">
     <!-- карточки можно вынести в отдельный компонент -->
     <div class="pagination__cards">
-      <RouterLink :to="`${linkCard}${card.id}`" v-for="(card, index) in cardsData.slice(startPagination, endPagination)"
+      <RouterLink :to="`${linkCard}${card.id}`" v-for="(card) in cardsData.slice(startPagination, endPagination)"
         :key="card.id" class="pagination__card">
         <span class="pagination__card-img">
-          <img :src="`/game3d/images/${card.images[0]}`" :alt="card.name" />
+          <img :src="`${BASE_PATH}/images/${card.images[0]}`" :alt="card.name" />
         </span>
         <span class="pagination__card-text">
           {{ card.name }}

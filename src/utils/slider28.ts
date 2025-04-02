@@ -13,7 +13,6 @@ type SliderOptions = {
 
 export class Slider {
 
-  private count:number = 0
 
   private mediaQueries: MediaQueries;
 
@@ -226,12 +225,12 @@ export class Slider {
 
   handleMove(e: any) {
     if (!this.isDragging) return;
-    // e.preventDefault();
+    e.preventDefault();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     this.moveDragDrop(clientX);
   }
 
-  handleEnd(e: Event) {
+  handleEnd() {
     if (!this.isDragging) return;
     // e.preventDefault();
     this.endDragDrop();
