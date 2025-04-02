@@ -1,0 +1,16 @@
+
+.step-icon {
+  width: 20px;
+  height: 10px;
+  background-color: black;
+  box-shadow: 0 0 3px 1px rgb(53, 27, 27);
+  border-radius: 20px;
+  transition: transform .5s ease-out, box-shadow .5s ease-in;
+
+  &--active {
+    background-color: antiquewhite;
+    box-shadow: 0 0 3px 1px rgb(255, 255, 255);
+    transform: scaleX(1.2);
+
+  }
+}

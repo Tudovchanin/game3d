@@ -1,0 +1,17 @@
+
+.logo {
+  text-transform: uppercase;
+
+    font-weight: 700;
+    color: white;
+    text-decoration-line: underline;
+    text-decoration-color: bisque;
+
+    @media (hover:hover) {
+      transition: opacity .5s;
+
+      &:hover {
+        opacity: .5;
+      }
+    }
+}

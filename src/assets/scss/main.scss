@@ -1,0 +1,27 @@
+@use './reset';
+@use './variables';
+@use './utilities';
+
+
+@use './blocks/header';
+@use './blocks/logo';
+@use './blocks/step-icon';
+@use './blocks/tab-button';
+
+
+
+
+body {
+  min-height: 100vh;
+  background-color: white;
+  background: -webkit-linear-gradient(90deg, #bdbdbd,#dedede,#ffffff);background: linear-gradient(90deg, #bdbdbd,#dedede,#ffffff);
+  font-family: sans-serif;
+}
+
+
+
+// Просим сверстать условную страницу описания товара в онлайн-магазине, состоящую из таких элементов:
+// 1. Название и цена товара
+// 2. Слайдер фотографий товара
+// 3. Закладки (tabs): (1) текстовое описанием товара + (2) табличка тех.характеристик.
+// 4. Форма "Закажите сейчас" - 2 поля: имя и телефон.

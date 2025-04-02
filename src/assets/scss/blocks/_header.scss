@@ -1,0 +1,21 @@
+
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 50px;
+  background-color: var(--color-main);
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    font-size: 24px;
+  }
+
+}
+
