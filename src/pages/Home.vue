@@ -1,9 +1,12 @@
 
 <template>
   <div class="home x-center width-common">
-    <h1 class="home__title">Game 3d</h1>
 
-    <RouterLink  class="home__link" to="/products/?page=1">Our Products</RouterLink>
+    <RouterLink to="/products/?page=1">
+      <h1 class="home__title">Game 3d</h1>
+    <div  class="home__link" to="/products/?page=1">Our Products</div>
+    </RouterLink>
+   
   </div>
 
 </template>
@@ -25,6 +28,7 @@
   &__link {
     font-size: min(50px, 7vw);
     position: relative;
+    text-align: center;
 
     @media (hover:hover) {
       &::before {
