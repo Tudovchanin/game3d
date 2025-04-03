@@ -4,7 +4,6 @@ import { useRoute, useRouter } from "vue-router";
 import type { Product } from "@/stores/products.store";
 const BASE_PATH = `${import.meta.env.BASE_URL}`;
 
-
 type Pagination = {
   cardsData: Product[];
   pageItemCount: number;
@@ -19,11 +18,9 @@ const props = defineProps<Pagination>();
 const router = useRouter();
 const route = useRoute();
 
-
 const allBtn = ref<HTMLElement[] | null>(null);
 const wrapperVisibleWidth = ref<HTMLElement | null>(null);
 const containerBtn = ref<HTMLElement | null>(null);
-
 
 const lengthBtn = computed(() => {
   if (!props.cardsData) return;
@@ -37,8 +34,6 @@ const currentPage = computed(() => {
   }
 });
 const selectPage = ref(currentPage.value);
-
-
 
 const endPagination = computed(() => {
   if (selectPage.value && props.cardsData) {
@@ -54,14 +49,12 @@ const startPagination = computed(() => {
   }
 });
 
-
 const handleSelectPage = (page: number, indexBtn: number) => {
   selectPage.value = page;
 
   router.replace(`${props.linkPage}?page=${selectPage.value}`);
   indexActiveBtn.value = indexBtn;
 };
-
 
 const setVariables = computed(() => {
   return { "--btn-gap": props.gapBtn };
@@ -74,7 +67,6 @@ onMounted(() => {
   if (!allBtn.value) return;
 
   const buttonElement: HTMLElement = allBtn.value[0];
-
 
   if (buttonElement) {
     const widthButton: any = buttonElement.getBoundingClientRect()
@@ -114,8 +106,9 @@ onUpdated(() => {
     selectPage.value >= props.visibleBtn &&
     selectPage.value !== allBtn.value.length
   ) {
-    containerBtn.value.style.transform = `translateX(${(selectPage.value - (props.visibleBtn - 1)) * -widthTransform
-      }px)`;
+    containerBtn.value.style.transform = `translateX(${
+      (selectPage.value - (props.visibleBtn - 1)) * -widthTransform
+    }px)`;
   }
   if (selectPage.value < props.visibleBtn) {
     containerBtn.value.style.transform = "translateX(0px)";
@@ -126,10 +119,17 @@ onUpdated(() => {
   <div class="pagination">
     <!-- карточки можно вынести в отдельный компонент -->
     <div class="pagination__cards">
-      <RouterLink :to="`${linkCard}${card.id}`" v-for="(card) in cardsData.slice(startPagination, endPagination)"
-        :key="card.id" class="pagination__card">
+      <RouterLink
+        :to="`${linkCard}${card.id}`"
+        v-for="card in cardsData.slice(startPagination, endPagination)"
+        :key="card.id"
+        class="pagination__card"
+      >
         <span class="pagination__card-img">
-          <img :src="`${BASE_PATH}/images/${card.images[0]}`" :alt="card.name" />
+          <img
+            :src="`${BASE_PATH}/images/${card.images[0]}`"
+            :alt="card.name"
+          />
         </span>
         <span class="pagination__card-text">
           {{ card.name }}
@@ -138,22 +138,40 @@ onUpdated(() => {
     </div>
 
     <div :style="setVariables" class="pagination__footer">
+      <button
+        @click="handleSelectPage(1, 0)"
+        class="pagination__to-start"
+        :class="{'hidden-dots': currentPage! < visibleBtn}"
+      >
+        В начало
+      </button>
+
       <div ref="wrapperVisibleWidth" class="pagination__hidden-btn">
         <div ref="containerBtn" class="pagination__container-btn">
-          <button v-show="startPagination! <= props.cardsData!.length && allBtn?.length !== 1" ref="allBtn"
-            @click="handleSelectPage(v, index)" class="pagination__btn no-select" :class="{ 'active-btn': v === selectPage }"
-            v-for="(v, index) in lengthBtn" :key="index">
+          <button
+            v-show="startPagination! <= props.cardsData!.length && allBtn?.length !== 1"
+            ref="allBtn"
+            @click="handleSelectPage(v, index)"
+            class="pagination__btn no-select"
+            :class="{ 'active-btn': v === selectPage }"
+            v-for="(v, index) in lengthBtn"
+            :key="index"
+          >
             {{ v }}
-        </button>
+          </button>
         </div>
       </div>
 
-      <div :class="{
+      <div
+        :class="{
         'hidden-dots':
           startPagination! > cardsData.length ||
           selectPage === lengthBtn ||
           indexActiveBtn + visibleBtn > lengthBtn!
-      }" class="pagination__dots no-select" aria-hidden="true">
+      }"
+        class="pagination__dots no-select"
+        aria-hidden="true"
+      >
         <button style="background-color: black">...</button>
       </div>
     </div>
@@ -242,8 +260,32 @@ onUpdated(() => {
     cursor: pointer;
     opacity: 0.5;
 
+    @media (hover:hover) {
+      transition: color .2s, background-color .2s;
+      &:hover {
+        background-color: var(--color-secondary);
+        color: var(--light-color);
+        opacity: 1;
+        
+      }
+    }
   }
 
+  &__to-start{
+    padding: 0 10px;
+    font-weight: 700;
+    background-color: var(--color-secondary);
+    color: var(--light-color);
+    @media (hover:hover) {
+      transition: color .5s, background-color .5s;
+      &:hover {
+        background-color: var(--light-color);
+        color: var(--color-secondary);
+        opacity: 1;
+        
+      }
+    }
+  }
   &__dots {
     width: 34px;
     height: 34px;
@@ -254,10 +296,8 @@ onUpdated(() => {
     line-height: 34px;
     transition: opacity 0.3s linear;
     background-color: var(--color-secondary);
-    
   }
 }
-
 
 .active-btn {
   opacity: 1;

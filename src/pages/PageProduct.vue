@@ -269,6 +269,12 @@ onBeforeUnmount(() => {
     background-color: var(--light-color);
     color: var(--color-secondary);
     transition: color  .5s, background-color .5s;
+    @media (hover:hover) {
+      &:hover {
+        background-color: var(--color-secondary);
+      color: var(--light-color);
+      }
+    }
 
     &--active {
       background-color: var(--color-secondary);
